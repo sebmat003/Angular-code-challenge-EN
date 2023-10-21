@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { EffectsModule } from "@ngrx/effects";
+import { SharedModule } from "./shared/shared.module";
+import { NgxMaskModule } from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -10,9 +13,12 @@ import { StoreModule } from '@ngrx/store';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({}, {})
+    SharedModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    AppRoutingModule,
+    NgxMaskModule.forRoot({})
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

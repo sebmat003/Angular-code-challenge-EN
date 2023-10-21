@@ -1,0 +1,25 @@
+<div class="container grid md:grid-cols-2">
+  <ng-container *ngIf="!(loading$ | async); else loader">
+    <form class="p-8 relative">
+      <h2 class="text-xl font-bold text-blue-500">Voertuiginformatie opzoeken</h2>
+      <app-vehicle-type *ngIf="vehicleTypes$ | async as types" [vehicleTypes]="types"
+                        [vehicleTypeControl]="vehicleTypeControl"
+                        (vehicleTypeChange$)="onVehicleTypeChange($event)"></app-vehicle-type>
+      <app-vehicle-subtype *ngIf="vehicleSubtypes$ | async as subTypes" [vehicleSubtypes]="subTypes"
+                           [vehicleSubtypeControl]="vehicleSubTypeControl"></app-vehicle-subtype>
+      <app-vehicle-license-plate [licencePlateControl]="licencePlateControl"></app-vehicle-license-plate>
+      <div class="mt-4">
+        <button [disabled]="form.invalid" class="bg-blue-500 enabled:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:grayscale" type="submit">
+          Verzenden
+        </button>
+        <div *ngIf="form.invalid && form.dirty" class="text-red-700">Vul alle waardes correct in.</div>
+      </div>
+    </form>
+    <picture *ngIf="vehicleTypeControl.value?.toLowerCase() as type">
+      <img [src]="'assets/' + type + '.jpg'" alt="auto" class="object-cover h-full w-full">
+    </picture>
+  </ng-container>
+</div>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
