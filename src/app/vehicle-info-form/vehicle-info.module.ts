@@ -12,11 +12,10 @@ import { VehicleInfoEffects } from "./store/effects/vehicle-info.effects";
 import { SharedModule } from "../shared/shared.module";
 import { VehicleInfoHttpService } from "./store/services/vehicle-info-http.service";
 import { ReactiveFormsModule } from "@angular/forms";
-import { FormatLicencePlatePipe } from "./pipes/format-licence-plate.pipe";
 import { NgxMaskModule } from "ngx-mask";
 
 @NgModule({
-  declarations: [VehicleInfoFormComponent, VehicleTypeComponent, VehicleSubtypeComponent, VehicleLicensePlateComponent, FormatLicencePlatePipe],
+  declarations: [VehicleInfoFormComponent, VehicleTypeComponent, VehicleSubtypeComponent, VehicleLicensePlateComponent],
   imports: [
     CommonModule,
     StoreModule.forFeature(featureKey, reducer),

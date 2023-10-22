@@ -6,6 +6,7 @@ import { VehicleType } from "../../models/vehicle-info.models";
 import { Observable, tap } from "rxjs";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { LicencePlateValidator } from "../../validators/licence-plate.validator";
+import { State } from "../../store/reducers/vehicle-info.reducers";
 
 @Component({
   selector: 'app-vehicle-info-form',
@@ -23,7 +24,7 @@ export class VehicleInfoFormComponent implements OnInit {
     licencePlate: new FormControl(null, { validators: [Validators.required, LicencePlateValidator], updateOn: 'blur'})
   });
 
-  constructor(private store: Store) {
+  constructor(private store: Store<State>) {
   }
 
   get vehicleTypeControl(): FormControl {
